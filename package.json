@@ -1,0 +1,40 @@
+{
+  "name": "express-quickstart",
+  "version": "1.0.0",
+  "description": "This will be a pre-built empty express server with basic testing and CI/CD through Docker and Heroku.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --verbose --maxWorkers=2",
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
+  },
+  "keywords": [
+    "Docker",
+    "Heroku",
+    "Quickstart",
+    "Template",
+    "Express",
+    "Node",
+    "CI/CD"
+  ],
+  "author": "Secundino Martinez <Dino.Martinez.514@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.0.6",
+    "supertest": "^6.1.3"
+  }
+}
