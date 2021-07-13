@@ -15,12 +15,18 @@ describe('Test app.js', () => {
     const todo = new Todo({ _id: SAMPLE_OBJECTID, title: 'This is the first todo', body: 'this body is meaningless' })
     todo.save().then(() => {
       done()
+    }).catch((err) => {
+      console.log(err)
+      done()
     })
   })
 
   // eslint-disable-next-line no-undef
   after(function (done) {
     Todo.deleteMany({}).then(() => {
+      done()
+    }).catch((err) => {
+      console.log(err)
       done()
     })
   })
