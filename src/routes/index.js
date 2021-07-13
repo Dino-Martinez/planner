@@ -1,11 +1,19 @@
+// Mongood models
+const Todo = require('../models/todos')
+
 module.exports = app => {
-  const todos = []
   app.get('/', (req, res) => {
-    res.json(todos)
+    Todo.find().lean().then(todos => {
+      res.json(todos)
+    })
   })
 
   app.post('/', (req, res) => {
-    todos.push(req.body)
-    res.send(true)
+    const todo = new Todo(req.body)
+    todo.save().then(doc => {
+      res.send({ todo: doc })
+    }).catch(err => {
+      res.status(400).send(err.errors)
+    })
   })
 }
