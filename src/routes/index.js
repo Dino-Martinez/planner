@@ -32,7 +32,15 @@ module.exports = app => {
 
   // Update one todo
   app.put('/:id', (req, res) => {
-    Todo.findByIdAndUpdate(req.params.id, req.body).then(doc => {
+    const options = {
+      // Return the document after updates are applied
+      new: true,
+      // Create a document if one isn't found. Required
+      // for `setDefaultsOnInsert`
+      upsert: true,
+      setDefaultsOnInsert: true
+    }
+    Todo.findByIdAndUpdate(req.params.id, req.body, options).then(doc => {
       res.send(doc)
     }).catch(err => {
       res.status(400).send(err.errors)
