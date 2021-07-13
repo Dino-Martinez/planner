@@ -12,7 +12,7 @@ const app = express()
 // Set up default mongoose connection
 const mongoose = require('mongoose')
 const DB_URI = process.env.MONGO_URI
-mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
 const db = mongoose.connection
 db.on('error', err => {
