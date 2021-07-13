@@ -4,6 +4,8 @@ const chaiHttp = require('chai-http')
 const app = require('../app')
 const Todo = require('../models/todos')
 const SAMPLE_OBJECTID = '60ed0eaf1df2ba3be8646211'
+const mongoose = require('mongoose')
+
 // Configure chai
 chai.use(chaiHttp)
 chai.should()
@@ -12,6 +14,7 @@ describe('Test app.js', () => {
   // Before and after are only defined within the context of the Mocha runtime environment
   // eslint-disable-next-line no-undef
   before(function (done) {
+    console.log(mongoose.connection)
     const todo = new Todo({ _id: SAMPLE_OBJECTID, title: 'This is the first todo', body: 'this body is meaningless' })
     todo.save().then(() => {
       done()
