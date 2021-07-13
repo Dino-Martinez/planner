@@ -11,14 +11,18 @@ chai.should()
 describe('Test app.js', () => {
   // Before and after are only defined within the context of the Mocha runtime environment
   // eslint-disable-next-line no-undef
-  before(async function () {
+  before(function (done) {
     const todo = new Todo({ _id: SAMPLE_OBJECTID, title: 'This is the first todo', body: 'this body is meaningless' })
-    await todo.save()
+    todo.save().then(() => {
+      done()
+    })
   })
 
   // eslint-disable-next-line no-undef
-  after(async function () {
-    await Todo.deleteMany({})
+  after(function (done) {
+    Todo.deleteMany({}).then(() => {
+      done()
+    })
   })
 
   it('Should add a todo', async function () {
