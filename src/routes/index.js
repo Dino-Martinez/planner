@@ -1,5 +1,6 @@
 // Mongoose models
 const Todo = require('../models/todos')
+const authenticator = require('../middleware/userAuth')
 
 module.exports = app => {
   // Create a new todo
@@ -13,7 +14,7 @@ module.exports = app => {
   })
 
   // Read all todos
-  app.get('/', (req, res) => {
+  app.get('/', authenticator, (req, res) => {
     Todo.find().lean().then(todos => {
       res.json(todos)
     }).catch(err => {
