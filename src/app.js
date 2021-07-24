@@ -33,6 +33,7 @@ app.use(compression())
 
 // Routes
 require('./routes/index.js')(app)
+require('./routes/auth.js')(app)
 
 // Export App for server/testing
 module.exports = app
